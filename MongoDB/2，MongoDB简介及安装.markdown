@@ -1,6 +1,5 @@
 ﻿# MongoDB简介及安装
 
-标签（空格分隔）： MongoDB
 
 ---
 ## **概述** ##
@@ -81,7 +80,7 @@ echo dbpath=c:\data\db>> "C:\Program Files\MongoDB 2.6 Standard\mongod.cfg"
 
 ## **开启Web管理信息界面** 
  MongoDB自带一个微型的web管理信息界面，需要修改/mongod.conf中的一个配置项：
-```
+```shell
 httpinterface=true
 ```
 打开浏览器访问<http://127.0.0.1:28017>
@@ -93,11 +92,11 @@ httpinterface=true
 5. 所有的MongoDB命令
 ## **windows 下启动MongoDB的rest接口**
 启动mongodb后，在web端口访问情况下，点击List all commands会出现如下错误
-```
+```shell
 REST is not enabled.  use --rest to turn on.
 check that port 28017 is secured for the network too.
 ```
 需要修改/mongod.conf中的一个配置项：
-```
+```shell
 rest = true
 ```
