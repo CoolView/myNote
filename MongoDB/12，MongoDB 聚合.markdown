@@ -1,21 +1,20 @@
 ﻿# MongoDB 聚合
 
-标签（空格分隔）： MongoDB
 
 ---
 
 1、count函数：查询文档数，如下图：
-```
+```shell
 > db.person.find().count()
 6
 >
 ```
 2、distinct：去重，用法：`db.runCommand({distinct:"集合名", key:"查询的键"})`，如下图：
-```
+```shell
 > db.runCommand({distinct:"person",key:"age"})
 ```
 3、group：分组，语法如下：首先会按照key指定的键进行分组，每组的每一个文档都要执行`$reduce`指定的方法，该方法接收2个参数，一个是组内本条文档，一个是累加器数据。
-```
+```shell
 db.runCommand({group:{  
     ns: 集合名,  
     key: 分组的键,  
@@ -26,7 +25,7 @@ db.runCommand({group:{
 }})  
 ```
 集合中的数据如下：
-```
+```shell
 {
    _id: ObjectId(7df78ad8902c)
    title: 'MongoDB Overview', 
@@ -56,7 +55,7 @@ db.runCommand({group:{
 },
 ```
 现在我们通过以上集合计算每个作者所写的文章数，使用aggregate()计算结果如下：
-```
+```shell
 > db.mycol.aggregate([{$group : {_id : "$by_user", num_tutorial : {$sum : 1}}}])
 {
    "result" : [
@@ -149,7 +148,7 @@ MongoDB的聚合管道将MongoDB文档在一个管道处理完毕后将结果传
 管道操作符实例
 
 1、\$project实例
-```
+```shell
 db.article.aggregate(
     { $project : {
         title : 1 ,
@@ -159,7 +158,7 @@ db.article.aggregate(
 ```
  
 这样的话结果中就只还有_id,tilte和author三个字段了，默认情况下_id字段是被包含的，如果要想不包含_id话可以这样:
-```
+```shell
 db.article.aggregate(
     { $project : {
         _id : 0 ,
@@ -168,7 +167,7 @@ db.article.aggregate(
     }});
 ```
 2.$match实例
-```
+```shell
 db.articles.aggregate( [
                 { $match : { score : { $gt : 70, $lte : 90 } } },
                 { $group: { _id: null, count: { $sum: 1 } } }
@@ -177,7 +176,7 @@ db.articles.aggregate( [
 \$match用于获取分数大于70小于或等于90记录，然后将符合条件的记录送到下一阶段\$group管道操作符进行处理。
 
 3.$skip实例
-```
+```shell
 db.article.aggregate(
     { $skip : 5 });
 ```
