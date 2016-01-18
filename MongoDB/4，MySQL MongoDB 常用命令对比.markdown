@@ -1,8 +1,5 @@
 ﻿# MySQL MongoDB 常用命令对比
 
-标签（空格分隔）： MongoDB
-
----
 
 ![MongoDB](http://ww2.sinaimg.cn/large/81c3ce79jw1eho4qatgvaj20nd08374r.jpg)
 <table>
