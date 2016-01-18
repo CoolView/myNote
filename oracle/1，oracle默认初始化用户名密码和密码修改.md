@@ -19,7 +19,7 @@ Dbsnmp/dbsnmp		|  SYSDBA 或 NORMAL		|  复制管理员
         `alter user system identified by password;`   修改System 密码  为password
 或者打开`sqlplus`软件:
 窗口用户名录入:`/nolog`
-```shell  
+```shell
 D:\oracle\ora92\bin>sqlplus /nolog
 SQL*Plus: Release 9.2.0.1.0 - Production on 星期四 8月 16 11:32:22 2007
 Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
