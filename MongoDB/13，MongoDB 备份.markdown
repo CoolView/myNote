@@ -1,6 +1,5 @@
 ﻿# MongoDB 备份
 
-标签（空格分隔）： MongoDB
 
 ---
 
@@ -12,7 +11,7 @@
 --host：指明数据库主机地址（不写默认就是本机）
 --port：指明数据库端口（不写默认就是27017）
 如下图：导出test数据库中的person集合
-```
+```shell
 C:\Users\bin>mongoexport -d test -c person -o C:\data\person.json
 2015-06-02T14:43:02.493+0800    connected to: localhost
 2015-06-02T14:43:02.495+0800    exported 6 records
@@ -25,19 +24,19 @@ C:\Users\bin>mongoexport -d test -c person -o C:\data\person.json
 --host：指明数据库主机地址（不写默认就是本机）
 --port：指明数据库端口（不写默认就是27017）
 如下图：导入数据到test数据库中的person集合
-```
+```shell
 C:\Users\bin>mongoimport --db test --collection person2 --file C:\data\person.json
 2015-06-02T14:46:27.687+0800    connected to: localhost
 2015-06-02T14:46:27.691+0800    imported 6 documents
 ```
 3、运行时备份
 运行时备份可以使用mongodump命令，它不会中断其它操作，但可能会遗漏数据，因为可能内存中的数据尚未写回数据库中。如下图：备份test数据库
-```
+```shell
 C:\Users\bin>mongodump --host 127.0.0.1:27017 -d test -o C:\data\test
 ```
 4、运行时恢复
 运行时恢复可以使用mongorestore命令，如下图：恢复test数据库
-```
+```shell
 C:\Users\bin>mongorestore --host 127.0.0.1:27017 -d test -directoryperdb C:\data\test\test
 ```
 5、数据修复
