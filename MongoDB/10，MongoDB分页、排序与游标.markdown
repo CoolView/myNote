@@ -1,12 +1,11 @@
 ﻿# MongoDB分页、排序与游标
 
-标签（空格分隔）： MongoDB
 
 ---
 
 一、分页
 1、limit返回指定条数的数据
-```
+```shell
 > db.person.find()
 { "_id" : 1001, "name" : "lisi", "age" : 20 }
 { "_id" : 1002, "name" : "zhangsan", "age" : 21 }
@@ -22,7 +21,7 @@
 >
 ```
 2、skip指定跨度
-```
+```shell
 > db.person.find().skip(3)
 { "_id" : 1004, "name" : "zhaoliu", "age" : 17 }
 { "_id" : 1005, "name" : "sunqi", "age" : 24 }
@@ -30,7 +29,7 @@
 >
 ```
 3、limit与skip结合，进行分页
-```
+```shell
 > db.person.find().skip(0).limit(2)
 { "_id" : 1001, "name" : "lisi", "age" : 20 }
 { "_id" : 1002, "name" : "zhangsan", "age" : 21 }
@@ -46,7 +45,7 @@
 ```
 二、排序
 1、sort排序：指定排序的key，大于0为升序，小于0为降序。如果指定了多个排序键，比如`{age:1,name:-1}`，则是先按age升序排列，对于age键相等的文档，则按name降序排列。
-```
+```shell
 > db.person.find().sort({age:1})
 { "_id" : 1004, "name" : "zhaoliu", "age" : 17 }
 { "_id" : 1003, "name" : "wangwu", "age" : 18 }
@@ -65,7 +64,7 @@
 >
 ```
 2、排序的先后：从下图中可以发现，使用`sort`，始终是先对满足查询条件而查询到的结果集进行排序，然后再进行选取指定的条数或者是跳过指定的条数。它们的关系就是：在数据库服务器端，先执行`sort`，然后在排好序的文档上执行`skip`，最后按照`limit`设定的最大数量返回文档子集即可。
-```
+```shell
 > db.person.find().limit(2).sort({age:1})
 { "_id" : 1004, "name" : "zhaoliu", "age" : 17 }
 { "_id" : 1003, "name" : "wangwu", "age" : 18 }
@@ -88,7 +87,7 @@
 >
 ```
 3、排序的优先级：由于MongoDB的key可以存储不同类型的数据，所以排序是有优先级的，如下图：
-```
+```shell
 > db.person.find()
 { "_id" : 1001, "name" : "lisi", "age" : 20 }
 { "_id" : 1002, "name" : "zhangsan", "age" : 21 }
@@ -110,7 +109,7 @@
 
 三、游标
 1、如下图所示，查询出某个文档中某个key（假设类型是数组）的元素个数，使用find函数的返回值是一个游标，所以需要用到游标遍历的方式来遍历查询出来的每个文档，而findOne就可以直接输出。
-```
+```shell
 > db.person1.find()
 { "_id" : 1002, "name" : "bbb", "books" : [ "JS" ] }
 { "_id" : 1001, "name" : "aaa", "books" : [ "JSP", "JAVA" ] }
@@ -128,7 +127,7 @@
 >
 ```
 2、find()函数返回一个游标。如果在调用find函数时，不保存返回值，其会自动递归find返回的游标，将前20条数据展示在shell中（输入“it”会继续显示下20条），
-```
+```shell
 { "_id" : 17, "age" : 17 }
 { "_id" : 18, "age" : 18 }
 { "_id" : 19, "age" : 19 }
