@@ -1,8 +1,5 @@
 ﻿# NoSQL
 
-标签（）： NoSQL MongoDB
-
----
 
 > 最近开始学习MongoDB 先了解下NoSQL
 
