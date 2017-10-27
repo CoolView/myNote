@@ -1,6 +1,5 @@
 Array.prototype.sort()
 > 1. [Array.prototype.sort() - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
-> 2. [js中数组(Array)的排序(sort)注意事项](http://www.cnblogs.com/yjmyzz/archive/2009/10/20/1586896.html)
 
 `sort()` 方法对数组的元素做原地的排序，并返回这个数组。 `sort` 可能不是[稳定的](https://zh.wikipedia.org/wiki/排序算法#.E7.A9.A9.E5.AE.9A.E6.80.A7)。默认按照字符串的`UNICODE`码位点 `(code point)` 排序。
 
